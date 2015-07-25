@@ -1,0 +1,58 @@
+#Proportion Comparison:
+#Analysis I
+#Beta prior (uninformative), binomial likelihood
+Lex vs Placebo {
+p.drug ~ dbeta(0.01,0.01)
+p.plac ~ dbeta(0.01,0.01)
+x.drug ~ dbin(p.drug,n.drug)
+x.plac ~ dbin(p.plac,n.plac)
+delta <- p.drug-p.plac
+delgt0 <- step(delta-0)
+delgt0.25 <- step(delta-0.05)
+}
+#data list varies depending on data provided in study
+DATA list(x.drug=22,x.plac=12,n.drug=310,n.plac=311)
+#Relative Risk Comparison:
+#Analysis I
+#Beta prior (uninformative), binomial likelihood
+Lex vs Placebo {
+p.drug ~ dbeta(0.01,0.01)
+p.plac ~ dbeta(0.01,0.01)
+x.drug ~ dbin(p.drug,n.drug)
+x.plac ~ dbin(p.plac,n.plac)
+RR <- p.drug/p.plac
+lnRR <- log(RR)
+RRgt1 <- step(RR-1)
+RRgt3 <- step(RR-3)
+}
+#data list varies depending on data provided in study
+DATA list(x.drug=22,x.plac=12,n.drug=310,n.plac=311)
+#Proportion Comparison:
+#Analysis II
+#Beta prior (uninformative), binomial likelihood
+Lex vs Placebo {
+p.drug ~ dbeta(0.01,0.01)
+p.plac ~ dbeta(0.01,0.01)
+x.drug ~ dbin(p.drug,n.drug)
+x.plac ~ dbin(p.plac,n.plac)
+delta <- p.drug-p.plac
+delgt0 <- step(delta-0)
+delgt0.25 <- step(delta-0.05)
+}
+#data list varies depending on data provided in study
+DATA list(x.drug=22,x.plac=12,n.drug=310,n.plac=311)
+
+#Relative Risk Comparison:
+#Analysis II
+#Beta prior (uninformative), binomial likelihood
+Lex vs Placebo {
+p.drug ~ dbeta(0.01,0.01)
+p.plac ~ dbeta(0.01,0.01)
+x.drug ~ dbin(p.drug,n.drug)
+x.plac ~ dbin(p.plac,n.plac)
+RR <- p.plac/p.drug
+RRgt1 <- step(RR-1)
+RRgt2.73 <- step(RR-2.73)
+}
+#data list varies depending on data provided in study
+DATA list(x.drug=5,x.plac=8,n.drug=25,n.plac=21)
